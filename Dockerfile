@@ -1,6 +1,6 @@
 # BUILDER
 FROM python:3.9.20-alpine as builder
-
+LABEL org.opencontainers.image.source="https://github.com/oats-center/oatsmobile-fusion"
 WORKDIR /usr/src/app
 
 # Activate virtualenv
