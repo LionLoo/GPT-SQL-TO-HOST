@@ -27,14 +27,13 @@ async def main():
     except:
         print("Failed to connect to NATS server")
     
+
+    # Buffers to store messages for correlation
     gps_messages = []
     rfid_messages = []
 
     async def correlate_data():
         
-        # Lists to store correlated messages for deletion 
-        correlated_gps = []
-        correlated_rfid = []
         agg_msg = {}
     
         for gps_msg in gps_messages:
@@ -42,6 +41,7 @@ async def main():
             # once we get a proper fix.
             try:
                 gps_msg['lat']
+            
             except(KeyError):
                 continue
             
@@ -67,8 +67,8 @@ async def main():
                     agg_msg['antenna'] = rfid_msg['data']['antenna']
                     
                     # Publish aggregated message
-                    print(f"{agg_msg}")
                     await nc.publish(subject, bytes(json.dumps(agg_msg), 'utf-8'))
+                    
                     # Remove processed messages from buffers
                     rfid_messages.remove(rfid_msg)
             
