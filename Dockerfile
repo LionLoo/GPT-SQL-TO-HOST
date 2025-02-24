@@ -1,7 +1,7 @@
 # BUILDER
 FROM python:3.9.20-alpine as builder
 #LABEL org.opencontainers.image.source="https://github.com/oats-center/oatsmobile-fusion"
-LABEL org.opencontainers.image.source="https://github.com/LionLoo/GPT-TO-SQL"
+LABEL org.opencontainers.image.source="https://github.com/oats-center/GPT-SQL-TO-HOST"
 WORKDIR /usr/src/app
 
 # Activate virtualenv
