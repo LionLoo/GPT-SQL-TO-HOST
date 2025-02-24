@@ -1,6 +1,7 @@
 # BUILDER
 FROM python:3.9.20-alpine as builder
-LABEL org.opencontainers.image.source="https://github.com/oats-center/oatsmobile-fusion"
+#LABEL org.opencontainers.image.source="https://github.com/oats-center/oatsmobile-fusion"
+LABEL org.opencontainers.image.source="https://github.com/LionLoo/GPT-TO-SQL"
 WORKDIR /usr/src/app
 
 # Activate virtualenv
@@ -31,5 +32,5 @@ ENV PATH="/opt/venv/bin:$PATH"
 #HEALTHCHECK CMD ["python", "./healthcheck.py"]
 
 # Copy script over and run
-COPY fusion.py .
-CMD [ "python", "./fusion.py" ]
+COPY gpt.py .
+CMD [ "python", "./gpt.py" ]
